@@ -48,13 +48,22 @@ async function drawPDF() {
     //คำนำหน้าผู้รับรอง
     var teacher_prefix = document.getElementById("teacher_prefix").value;
     if (teacher_prefix === "นาง"){
-    ctx.fillText("_____", 490, 785)
-    }
-    else if (teacher_prefix === "นางสาว"){
+    ctx.fillText("______", 424, 785)
+    //ctx.fillText("_____", 490, 785)
+
     ctx.fillText("___________", 550, 785)
     }
-    else if (teacher_prefix === "นาย"){
+    else if (teacher_prefix === "นางสาว"){
+    ctx.fillText("_____", 490, 785)
     ctx.fillText("______", 424, 785)
+
+    //ctx.fillText("___________", 550, 785)
+    }
+    else if (teacher_prefix === "นาย"){
+    ctx.fillText("_____", 490, 785)
+    ctx.fillText("___________", 550, 785)
+
+    //ctx.fillText("______", 424, 785)
     }
 
     ctx.fillText(document.getElementById("teacher_name").value, 700, 800)
@@ -68,10 +77,10 @@ async function drawPDF() {
     //คำนำหน้าผู้ขอใบรับรอง
     var teacher_prefix = document.getElementById("student_prefix").value;
     if (teacher_prefix === "นาย"){
-    ctx.fillText("_______", 365, 935)
+    ctx.fillText("___________", 431, 935)
     }
     else if (teacher_prefix === "นางสาว"){
-    ctx.fillText("___________", 431, 935)
+    ctx.fillText("_______", 365, 935)
     }
 
 
