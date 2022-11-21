@@ -45,28 +45,34 @@ async function drawPDF() {
 	ctx.fillText(id_scheme, 475, 680)
     ctx.fillText(data_scheme[id_scheme], 705, 680)
 
-    //คำนำหน้าผู้รับรอง
+    //คำนำหน้าผู้รับรอง ในกรณีปกติ
     var teacher_prefix = document.getElementById("teacher_prefix").value;
     if (teacher_prefix === "นาง"){
-    ctx.fillText("______", 424, 785)
-    //ctx.fillText("_____", 490, 785)
+        ctx.fillText("______", 424, 785)
+        //ctx.fillText("_____", 490, 785)
 
-    ctx.fillText("___________", 550, 785)
+        ctx.fillText("___________", 550, 785)
     }
     else if (teacher_prefix === "นางสาว"){
-    ctx.fillText("_____", 490, 785)
-    ctx.fillText("______", 424, 785)
+        ctx.fillText("_____", 490, 785)
+        ctx.fillText("______", 424, 785)
 
-    //ctx.fillText("___________", 550, 785)
+        //ctx.fillText("___________", 550, 785)
     }
     else if (teacher_prefix === "นาย"){
-    ctx.fillText("_____", 490, 785)
-    ctx.fillText("___________", 550, 785)
+        ctx.fillText("_____", 490, 785)
+        ctx.fillText("___________", 550, 785)
 
-    //ctx.fillText("______", 424, 785)
+        //ctx.fillText("______", 424, 785)
+    }
+    
+    //กรณีเป็นยศให้ใส่ในชื่อไป
+    if (teacher_prefix === "สิบเอก"){
+        ctx.fillText(teacher_prefix + document.getElementById("teacher_name").value, 700, 800)
+    }else{
+        ctx.fillText(document.getElementById("teacher_name").value, 700, 800)
     }
 
-    ctx.fillText(document.getElementById("teacher_name").value, 700, 800)
     ctx.fillText(document.getElementById("teacher_rank").value, 1290, 800)
 
     ctx.fillText("สวรรค์อนันต์วิทยา", 400, 870)
