@@ -1,0 +1,219 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+
+        </title>
+
+        <!--font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap" rel="stylesheet">
+
+        <!-- bulma -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <!-- sweertalert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- jsPDF -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js" integrity="sha512-ToRWKKOvhBSS8EtqSflysM/S7v9bB9V0X3B1+E7xo7XZBEZCPL3VX5SFIp8zxY19r7Sz0svqQVbAOx+QcLQSAQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    </head>
+    <body onload="list_scheme();">
+
+        <section class="hero is-info is-fullheight">
+            <div class="hero-body">
+              
+                <div class="columns is-multiline is-centered" style="width: 100%;">
+                  <div class="column is-8">
+                    <p class="is-size-2 has-text-centered">ระบบกรอกแบบฟอร์มรับรองความประพฤติของโรงเรียน ม.นเรศวร</p>
+                  </div>
+                  <div class="column is-three-fifths">
+                  
+                  <!-- card วิธีใช้งาน -->
+                    <div class="card" style="width: 100%;">
+                      <header class="card-header">
+                        <p class="card-header-title is-size-4">
+                          วิธีการใช้งานระบบสร้างแบบฟอร์ม
+                        </p>
+                      </header>
+                      <div class="card-content">
+                        
+                        <div class="content">
+                          
+                          <!-- วิธีใช้งาน -->
+                          <p class="is-size-5">1. กรอกข้อมูลในแบบฟอร์มที่ให้กรอกให้ครบถ้วน</p>
+                          <p class="is-size-5">2. ตรวจสอบข้อมูลอีกครั่ง</p>
+                          <p class="is-size-5">3. กดปุ่ม สร้างไฟล์ PDF จะมีตัวอย่างไฟล์ ให้ตรวจสอบความถูกต้อง พร้อมปุ่ม download PDF ขึ้นมา</p>
+                          <p class="is-size-5">4. ดาวน์โหลดไฟล์ PDF ได้เลย ในกรณีที่ข้อมูลถูกต้อง</p>
+
+                          <p class="is-size-4">ผู้พัฒนา นายกรฤต แสงทอง ม.6/4</p>
+                          <p class="is-size-4" style="line-height: 0.1rem;">Source Code : <a style="color: #037beb;" href="https://github.com/korarit/form_generate" target="_blank">https://github.com/korarit/form_generate</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="column is-three-fifths">
+                  
+                    <!-- card form -->
+                      <div class="card" style="width: 100%;">
+                        <header class="card-header">
+                          <p class="card-header-title is-size-4">
+                            กรอกข้อมูล
+                          </p>
+                        </header>
+                        <div class="card-content">
+                          
+                          <div class="content">
+                            
+                            <div class="columns is-gapless is-multiline is-centered" style="width: 100%;">
+
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                                <p class="is-size-4">ชื่อโครงการ</p>
+                              </div>
+
+                              <!-- form layout -->
+                              <div class="column is-11" style="margin-right: 0.5rem;">
+                                <div class="field">
+                                  <label class="label">ชื่อโครงการ</label>
+                                  <div class="control" style="width: 100%">
+                                    
+                                    <div class="select is-primary" style="width: 100%">
+                                      <select id="scheme" style="width: 100%">
+                                        <option value="">ชื่อโครงการ</option>
+                                      </select>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                                <hr style="background: #c7c7c7;">
+                              </div>
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                                <p class="is-size-4">ชื่อ - นามสกุล นักเรียน</p>
+                              </div>
+
+                              <!-- ชื่อนามสกุลตัวเอง -->
+                              <div class="column is-2" style="margin-top: 0.5rem;margin-right: 0.5rem;">
+                                <div class="field" style="width: 100%">
+                                  <label class="label">คำนำหน้า</label>
+                                  <div class="control">
+                                    
+                                    <div class="select is-info" style="width: 100%">
+                                      <select id="student_prefix" style="width: 100%">
+                                        <option>คำนำหน้า</option>
+                                        <option value="นาย">นาย</option>
+                                        <option value="นางสาว">นางสาว</option>
+                                      </select>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="column is-9" style="margin-top: 0.5rem;margin-right: 0.5rem;">
+                                <div class="field" style="width: 100%">
+                                  <label class="label">ชื่อ - นามสกุล (ไม่ต้องใส่คำหน้า)</label>
+                                  <div class="control">
+                                      <input id="student_name" class="input is-success" type="text" placeholder="ชื่อ - นามสกุล (ไม่ต้องใส่คำหน้า)">                              
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                                <hr style="background: #c7c7c7;">
+                              </div>
+
+                              
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                              <p class="is-size-4">ชื่อผู้รับรอง</p>
+                              </div>
+
+                              <!-- ชื่อนามสกุลครู -->
+                              <div class="column is-2" style="margin-top: 0.5rem;margin-right: 0.5rem;">
+                                <div class="field" style="width: 100%">
+                                  <label class="label">คำนำหน้า</label>
+                                  <div class="control">
+                                    
+                                    <div class="select is-info" style="width: 100%">
+                                      <select id="teacher_prefix" style="width: 100%">
+                                        <option>คำนำหน้า</option>
+                                        <option value="นาย">นาย</option>
+                                        <option value="นาง">นาง</option>
+                                        <option value="นางสาว">นางสาว</option>
+                                      </select>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="column is-7" style="margin-top: 0.5rem;margin-right: 0.5rem;">
+                                <div class="field" style="width: 100%">
+                                  <label class="label">ชื่อ - นามสกุล (ไม่ต้องใส่คำหน้า)</label>
+                                  <div class="control">
+                                      <input id="teacher_name" class="input is-success" type="text" placeholder="ชื่อ - นามสกุล (ไม่ต้องใส่คำหน้า)">                              
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="column is-2" style="margin-top: 0.5rem;margin-right: 0.5rem;">
+                                <div class="field" style="width: 100%">
+                                  <label class="label">คำแหน่ง</label>
+                                  <div class="control">
+                                    <input id="teacher_rank" class="input is-info" type="text" placeholder="ตำแหน่ง">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                                <hr style="background: #c7c7c7;">
+                              </div>
+
+                              <div class="column is-11" style="margin-right: 1.5rem;">
+                                <button id="CreatePDF-btn" class="button is-medium is-fullwidth is-info">สร้างไฟล์ PDF</button>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+                
+                
+              </div>
+              
+        </section>
+        <img src="/pdf/nu_school.png" id="cert" style="display: none;">
+        <canvas id="canvas" style="display: none;"></canvas>
+
+
+        <!-- modal image -->
+        <div class="modal" id="pdf_modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">ตรวจสอบข้อมูลอีกครั่ง</p>
+            </header>
+            <section class="modal-card-body">
+              <figure class="image is-3by4">
+                <img id="pdf_example" src="">
+              </figure>
+            </section>
+            <footer class="modal-card-foot">
+              <button id="download-btn" class="button is-success">Download PDF</button>
+              <button id="btn-close-moodal" class="button is-danger">แก้ไขข้อมูล</button>
+            </footer>
+          </div>
+        </div>
+
+
+        <!-- js -->
+        <script src="/js/nu_school.js"></script>
+    </body>
+</html>
