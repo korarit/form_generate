@@ -10,7 +10,7 @@ var downloadBtn = document.getElementById('download-btn')
 
 var image = new Image()
 image.crossOrigin="anonymous";
-image.src = '/pdf/nu_school.png'
+image.src = './pdf/nu_school.png'
 
 var ratio = image.width / image.height;
 var width = canvas.width;
