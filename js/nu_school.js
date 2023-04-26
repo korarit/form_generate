@@ -127,7 +127,7 @@ function DownloadPDF(){
 }
 
 async function list_scheme (){
-    const data = await get_json("/json/nu.json");
+    const data = await get_json("./json/nu.json");
 
     var html = "";
     let i = 1;
