@@ -32,7 +32,7 @@ async function get_json(url){
 
 async function drawPDF() {
 
-    var data_scheme = await get_json("/json/nu.json");
+    var data_scheme = await get_json("./json/nu.json");
 
     ctx.imageSmoothingEnabled = false;
     //ctx.clearRect(0, 0, canvas.width, canvas.height)
